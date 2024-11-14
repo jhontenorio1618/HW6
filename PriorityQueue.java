@@ -1,7 +1,6 @@
-
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   Jhon Tenorio / COMP 272 001 F24
  *
  *   Note, additional comments provided throughout this source code
  *   is for educational purposes
@@ -78,7 +77,7 @@ import java.util.Comparator;
 class PriorityQueue<E, P> {
 
     private static final int DEFAULT_CAPACITY = 10; // initial queue size
-  
+    
     final Comparator<P> comparator;
     final ArrayList<Node> tree;       // The Heap is stored in an array as a tree
                                       // with the root at index 0 (not 1)
@@ -148,12 +147,15 @@ class PriorityQueue<E, P> {
      * @return: Node        - Returns an object of type 'Node' representing the 
      *                        newly inserted element
      */
-
+  
     public Node add(E e, P priority) {
-
-        // YOUR CODE GOES HERE
-        return null;
+        Node newNode = new Node(e, priority, tree.size());
+        tree.add(newNode);                         
+        pullUp(tree.size() - 1);                   
+        return newNode;                            
     }
+    
+    
 
 
     /**
@@ -167,9 +169,14 @@ class PriorityQueue<E, P> {
      */
 
     public boolean contains(E e) {
-
-        // ADD YOUR CODE HERE
+        for (Node node : tree) {
+            if (node.value.equals(e)) {
+                return true;
+            }
+        }
         return false;
+        
+    
     }
 
 
